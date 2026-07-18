@@ -1,0 +1,366 @@
+# Weekly Recap – Java Fundamentals (Week 1)
+
+## Overview
+
+This week marked the beginning of my Java learning journey as part of my Platform Software Engineering roadmap. The focus was on building a solid understanding of Java syntax and core programming concepts rather than simply learning how to write code.
+
+Since my long-term goal is to strengthen my software engineering fundamentals for senior platform engineering, principal architecture, and high-scale engineering roles, I concentrated on understanding **why** Java works the way it does.
+
+---
+
+## Topics Covered
+
+### 1. Java Program Structure
+
+Learned the basic structure of a Java application.
+
+```java
+public class Main {
+
+    public static void main(String[] args) {
+
+    }
+
+}
+```
+
+Key concepts learned:
+
+- Classes
+- The `main()` method
+- Program entry point
+- Curly braces and code blocks
+- Statements and semicolons
+
+---
+
+### 2. Variables and Data Types
+
+Learned how Java stores data in memory using variables.
+
+Practiced using:
+
+- `String`
+- `int`
+- `double`
+- `boolean`
+- `char`
+
+Example:
+
+```java
+String name = "Omotola";
+int age = 39;
+double height = 5.8;
+boolean deploymentApproved = true;
+char initial = 'A';
+```
+
+Key takeaway:
+
+> Variables allow values to be stored once and reused throughout the program instead of hardcoding them.
+
+---
+
+### 3. Printing Variables
+
+Learned string concatenation using the `+` operator.
+
+Example:
+
+```java
+System.out.println("Age: " + age);
+```
+
+---
+
+### 4. Arithmetic Operators
+
+Practiced:
+
+- Addition (`+`)
+- Subtraction (`-`)
+- Multiplication (`*`)
+- Division (`/`)
+- Modulo (`%`)
+
+Built a simple Kubernetes-inspired example calculating:
+
+- Total Pods
+- Healthy Pods
+- Average Healthy Pods per Node
+
+---
+
+### 5. Integer Division
+
+Learned one of Java's most important beginner concepts.
+
+```java
+5 / 2
+```
+
+returns
+
+```text
+2
+```
+
+not
+
+```text
+2.5
+```
+
+because both operands are integers.
+
+Also learned how casting changes the result.
+
+```java
+(double) 5 / 2
+```
+
+returns
+
+```text
+2.5
+```
+
+---
+
+### 6. Comparison Operators
+
+Practiced:
+
+- `==`
+- `!=`
+- `>`
+- `<`
+- `>=`
+- `<=`
+
+Example:
+
+```java
+cpuUsage >= 90
+```
+
+These comparisons return boolean values (`true` or `false`).
+
+---
+
+### 7. Decision Making
+
+Learned:
+
+- `if`
+- `else`
+- `else if`
+
+Example:
+
+```java
+if (cpuUsage >= 90) {
+    System.out.println("Critical CPU usage");
+} else if (cpuUsage >= 75) {
+    System.out.println("High CPU usage");
+} else {
+    System.out.println("CPU usage is normal");
+}
+```
+
+Also learned that the order of conditions matters when checking ranges.
+
+---
+
+### 8. Logical Operators
+
+Learned how to combine multiple conditions using:
+
+- `&&` (AND)
+- `||` (OR)
+- `!` (NOT)
+
+Built a deployment gate similar to real CI/CD pipelines.
+
+Example:
+
+```java
+if (cpuUsage < 90 &&
+    failedPods == 0 &&
+    deploymentApproved &&
+    securityScanPassed) {
+
+    System.out.println("Deployment Started");
+
+} else {
+
+    System.out.println("Deployment Blocked");
+}
+```
+
+This directly mirrors production deployment gating logic used in Platform Engineering.
+
+---
+
+### 9. For Loops
+
+Learned how Java repeats work using a `for` loop.
+
+Example:
+
+```java
+for (int i = 1; i <= 5; i++) {
+    System.out.println("Checking worker node " + i);
+}
+```
+
+Key concepts:
+
+- Initialization
+- Condition
+- Increment (`i++`)
+
+---
+
+### 10. Arrays
+
+Learned how Java stores multiple values in a single variable.
+
+Example:
+
+```java
+String[] awsServices = {
+    "EC2",
+    "EKS",
+    "Lambda",
+    "S3",
+    "DynamoDB"
+};
+```
+
+Practiced:
+
+- Accessing elements by index
+- Printing array values
+- Iterating through arrays using a loop
+
+---
+
+### 11. Array Length
+
+Learned to avoid hardcoding loop boundaries.
+
+Instead of:
+
+```java
+for (int i = 0; i <= 4; i++)
+```
+
+use:
+
+```java
+for (int i = 0; i < awsServices.length; i++)
+```
+
+This is more maintainable and prevents `ArrayIndexOutOfBoundsException`.
+
+---
+
+### 12. Enhanced For Loop (Introduction)
+
+Introduced the cleaner way of iterating through arrays.
+
+```java
+for (String service : awsServices) {
+    System.out.println(service);
+}
+```
+
+Learned when to use:
+
+- Traditional `for` loops (when the index is needed)
+- Enhanced `for` loops (when only the values are needed)
+
+---
+
+## Practical Exercises Completed
+
+- Personal profile printer
+- Variables and data types exercise
+- Kubernetes pod health calculations
+- CPU monitoring logic
+- Deployment approval gate
+- Worker node health checker
+- AWS services array traversal
+
+---
+
+## Key Programming Concepts Learned
+
+- Variables store values
+- Data types define what a variable can hold
+- Java is statically typed
+- Integer division behaves differently from decimal division
+- Comparisons return booleans
+- Programs make decisions using conditional statements
+- Logical operators combine multiple conditions
+- Loops eliminate repetitive code
+- Arrays store collections of related values
+- Professional Java code avoids hardcoded values whenever possible
+
+---
+
+## Connections to Platform Engineering
+
+Throughout the exercises, I intentionally related Java concepts to real Platform Engineering scenarios, including:
+
+- Kubernetes worker nodes
+- Pod health calculations
+- CPU monitoring
+- Deployment approval gates
+- Security scan validation
+- CI/CD decision logic
+- AWS service inventories
+
+This made the language immediately relevant to my day-to-day engineering work instead of learning isolated programming examples.
+
+---
+
+## Lessons Learned
+
+- Think about **why** code behaves a certain way instead of memorizing syntax.
+- Prefer descriptive variable names over short or ambiguous names.
+- Avoid hardcoded values whenever possible.
+- Always use braces (`{}`) with `if` statements and loops for readability and maintainability.
+- Use `.length` when iterating through arrays.
+- Keep code readable first; optimization comes later.
+
+---
+
+## Progress Assessment
+
+This week established a strong foundation in Java programming fundamentals. I can now comfortably write programs that:
+
+- Store and manipulate data
+- Perform calculations
+- Make decisions
+- Repeat tasks using loops
+- Work with arrays
+- Model simple Platform Engineering scenarios in Java
+
+These concepts provide the foundation needed before moving into methods, object-oriented programming (OOP), collections, exceptions, Maven, Spring Boot, and enterprise Java development.
+
+---
+
+## Next Week
+
+Focus areas:
+
+- Methods (Functions)
+- Method parameters
+- Return values
+- Method overloading
+- Scope and lifetime of variables
+
+These topics will enable writing reusable, modular code and prepare for object-oriented programming.
